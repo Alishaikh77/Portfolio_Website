@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://assets.ubuntu.com/v1/vanilla-framework-version-4.26.0.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <title>Document</title>
+  <style>
+    .typing-container {
+      font-size: 30px;
+      font-weight: 500;
+      color: white;
+      line-height: 1.5;
+      min-height: 50px;
+      /* Ensures vertical space is stable */
+      display: flex;
+      /* Aligns nicely with items inside */
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      /* Prevents overflow on smaller screens */
+    }
+
+    .typing-loop {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      vertical-align: bottom;
+      border-right: 2px solid white;
+      color: rgb(0, 94, 255);
+      width: 0ch;
+      font-size: 30px;
+      line-height: 1.5;
+      animation: typing 5s steps(22) infinite, blink 0.7s step-end infinite;
+    }
+
+    @keyframes typing {
+      0% {
+        width: 0ch;
+      }
+
+      40% {
+        width: 22ch;
+      }
+
+      60% {
+        width: 22ch;
+      }
+
+      100% {
+        width: 0ch;
+      }
+    }
+
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
+
+    .underlined {
+      transition: .5s ease;
+    }
+
+    .underlined:hover {
+      scale: 1.1;
+      border-bottom: 2px solid white;
+    }
+
+
+    .about {
+      height: 1000px;
+      width: 100%;
+      background-color: #262626;
+      
+    }
+
+    h1 {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      margin-top: 100px;
+      position: relative;
+      top: 50px;
+      right: 350px;
+      font-size: 3rem;
+      cursor: pointer;
+      width: 100%;
+      color: white;
+    }
+
+
+    @font-face {
+      font-family: "ubuntu";
+      font-style: italic;
+      font-weight: 300;
+      src: local("Lato Light Italic"), local("Lato-LightItalic"),
+        url(https://fonts.gstatic.com/s/ubuntucondensed/v8/u-4k0rCzjgs5J7oXnJcM_0kACGMtT-Dfqw.woff2) format("woff2");
+    }
+
+    @keyframes textclip {
+      to {
+        background-position: 200% center;
+      }
+    }
+
+    svg[height='0'][aria-hidden='true'] { position: fixed }
+
+    .text {
+      margin-top: 100px;
+      font-size: xx-large;
+      line-height: 50px;
+      --n: 4;
+	box-sizing: border-box;
+	place-self: center;
+	width: min(100%, 30em);
+	padding: 1em;
+	background: #ededed;
+	color: #121212;
+	font: clamp(.875em, 3.5vw, 1.75em) roboto condensed, sans-serif;
+	filter: url(#tear);
+
+  	&:first-letter {
+		float: left;
+		margin-right: .125em;
+		color: crimson;
+		font: 900 calc(var(--n)*1em)/ calc(var(--n)*1lh) kablammo, cursive
+	}
+    }
+
+
+
+    .box{
+      margin-left: 500px;
+     position: relative;
+     bottom: 600px;
+    }
+
+    .img-jinwo{
+      position: relative;
+      right: 350px;
+      top: 800px;
+      mix-blend-mode: color-dodge;
+      transition: .7s;
+      cursor: pointer;
+    }
+
+    .img-jinwo:hover{
+      scale: 1.1;
+      mix-blend-mode: normal;
+    }
+
+.underline-link,
+.underline-link:visited {
+  text-decoration: none;
+  color: black;
+  display: inline;
+  background-image: linear-gradient(to bottom, transparent 20%, red 21%);
+  background-position: 0 1em;
+  background-repeat: no-repeat;
+  background-size: 0% 6px;
+  transition: background-size 0.5s ease-in-out 0.2s;
+}
+
+.underline-link:hover,
+.underline-link:focus {
+  background-size: 100% 6px;
+  transition-delay: 0s;
+}
+
+  </style>
+</head>
+
+<body>
+  
+  
+
+  <header id="navigation" class="p-navigation is-dark ">
+    <div class="p-navigation__row--25-75">
+      <div class="p-navigation__banner" style="position: relative; right: 200px;">
+        <div class="p-navigation__tagged-logo">
+          <a class="p-navigation__link" href="#">
+            <div class="p-navigation__logo-tag">
+              <img class="p-navigation__logo-icon" src="WhatsApp Image 2025-07-12 at 5.15.58 PM.jpeg " alt="">
+            </div>
+            <span class="p-navigation__logo-title">Ali Shaikh</span>
+          </a>
+        </div>
+        <ul class="p-navigation__items">
+          <li class="p-navigation__item">
+            <button class="js-search-button p-navigation__link--search-toggle">
+              <span class="p-navigation__search-label">Search</span>
+            </button>
+          </li>
+          <li class="p-navigation__item">
+            <button class="js-menu-button p-navigation__link">Menu</button>
+          </li>
+        </ul>
+      </div>
+      <nav class="p-navigation__nav " style="position: relative; left: 200px;" aria-label="Example main">
+        <ul class="p-navigation__items">
+          <li class="p-navigation__item  underlined">
+            <a class="p-navigation__link" href="#">Home</a>
+          </li>
+          <li class="p-navigation__item underlined">
+            <a class="p-navigation__link" href="#about_me">About Me</a>
+          </li>
+          <li class="p-navigation__item underlined">
+            <a class="p-navigation__link" href="#">Skills</a>
+          </li>
+          <li class="p-navigation__item underlined">
+            <a class="p-navigation__link" href="#">Projects</a>
+          </li>
+          <li class="p-navigation__item underlined">
+            <a class="p-navigation__link" href="#">Experience</a>
+          </li>
+          <li class="p-navigation__item underlined">
+            <a class="p-navigation__link" href="#">Education</a>
+          </li>
+        </ul>
+
+        <ul class="p-navigation__items">
+          <button style="position: relative; top: 10px;" class="p-button--positive btn btn-outline-success">Hire
+            me</button>
+
+        </ul>
+
+
+
+      </nav>
+    </div>
+  </header>
+
+  <video autoplay muted loop playsinline style="
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 1090px;
+      width: 2200px;
+      object-fit: cover;
+      z-index: -1;
+    ">
+    <source src="181537-866999852_small.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="p-card"
+    style=" background-color: transparent; padding-top: 100px; padding-left: 200px; font-size: 38px; height: 874px; margin-top: 100px;">
+    <h2 style="margin-bottom: 20px; font-weight: 600; color: white;">Hey, my name is <span style="color: red;">Ali
+        Shaikh.</span></h2>
+
+    <p class="typing-container">
+      I am a professional and passionate
+      <span class="typing-loop">Python web developer.</span>
+    </p>
+
+    <button style="margin-top: 40px;" type="button" class="btn btn-outline-success">Connect with me</button>
+    <button style="margin-top: 40px;" type="button" class="btn btn-outline-primary">About Me</button>
+
+    <img src="Jinwoo.jpeg"
+      style="position: relative; left: 500px; bottom: 260px; width: 450px; height: 450px; mix-blend-mode:hard-light;"
+      class="rounded mx-auto d-block rounded-circle" alt="...">
+
+    <img style="width: 50px; height: 50px; position: relative; bottom: 400px;"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/2048px-Octicons-mark-github.svg.png"
+      class="rounded" alt="Cinque Terre">
+    <img style="width: 50px; height: 50px; position: relative; bottom: 400px; margin-left: 30px;"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/960px-LinkedIn_logo_initials.png"
+      class="" alt="Cinque Terre">
+    <img style="width: 80px; height: 80px; position: relative; bottom: 400px;  margin-left: 20px"
+      src="https://images.icon-icons.com/2642/PNG/512/google_mail_gmail_logo_icon_159346.png" class=""
+      alt="Cinque Terre">
+    <img style="width: 80px; height: 80px; position: relative; bottom: 400px;  margin-left: 10px "
+      src="https://static.vecteezy.com/system/resources/previews/018/930/415/non_2x/instagram-logo-instagram-icon-transparent-free-png.png"
+      class="" alt="Cinque Terre">
+  </div>
+  </div>
+
+  <div id="about_me" class="about">
+    
+    <div class="box">
+      <img src="Jinwoo.jpeg" class=" rounded-circle img-jinwo" alt="..." width="500px">
+
+      <h1>About Me</h1>
+  
+    <!-- 🧠 Step 1: Hidden SVG filter definition -->
+    <svg width="0" height="0" aria-hidden="true">
+      <filter id="tear">
+        <feTurbulence baseFrequency=".0317" numOctaves="3" />
+        <feDisplacementMap in="SourceGraphic" scale="24" xChannelSelector="R" />
+        <feOffset dx="-6" dy="-6" />
+        <feComposite in="SourceGraphic" operator="atop" />
+      </filter>
+    </svg>
+  
+   
+  
+  
+      <p class="text"><a class="underline-link">Hi! I'm a passionate Python developer, recently certified by IBM as a Python Full Stack Web
+        Developer.</a> I have a solid understanding of Python programming, along with hands-on experience in web development,
+        data extraction, and automation.
+  
+       <a class="underline-link"> One of my recent projects involved building a web scraper that extracts website data and stores it into Excel</a>
+        files—combining Python's power with real-world problem-solving. I've also explored Flask, Django, HTML, CSS, and
+        JavaScript to build simple, responsive web applications.
+  
+        I believe in writing clean, efficient code and am always curious to learn new technologies. <a class="underline-link"> I'm now looking for
+        opportunities to apply my skills in a professional setting and grow as a full-stack developer.
+  
+        Feel free to check out some of my work on GitHub.</a></p>
+    </div>
+
+
+  </div>
+
+
+  
+</body>
+
+</html>

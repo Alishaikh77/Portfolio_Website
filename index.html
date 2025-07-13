@@ -75,7 +75,7 @@
       height: 1000px;
       width: 100%;
       background-color: #262626;
-      
+
     }
 
     h1 {
@@ -107,39 +107,41 @@
       }
     }
 
-    svg[height='0'][aria-hidden='true'] { position: fixed }
+    svg[height='0'][aria-hidden='true'] {
+      position: fixed
+    }
 
     .text {
       margin-top: 100px;
       font-size: xx-large;
       line-height: 50px;
       --n: 4;
-	box-sizing: border-box;
-	place-self: center;
-	width: min(100%, 30em);
-	padding: 1em;
-	background: #ededed;
-	color: #121212;
-	font: clamp(.875em, 3.5vw, 1.75em) roboto condensed, sans-serif;
-	filter: url(#tear);
+      box-sizing: border-box;
+      place-self: center;
+      width: min(100%, 30em);
+      padding: 1em;
+      background: #ededed;
+      color: #121212;
+      font: clamp(.875em, 3.5vw, 1.75em) roboto condensed, sans-serif;
+      filter: url(#tear);
 
-  	&:first-letter {
-		float: left;
-		margin-right: .125em;
-		color: crimson;
-		font: 900 calc(var(--n)*1em)/ calc(var(--n)*1lh) kablammo, cursive
-	}
+      &:first-letter {
+        float: left;
+        margin-right: .125em;
+        color: crimson;
+        font: 900 calc(var(--n)*1em)/ calc(var(--n)*1lh) kablammo, cursive
+      }
     }
 
 
 
-    .box{
+    .box {
       margin-left: 500px;
-     position: relative;
-     bottom: 600px;
+      position: relative;
+      bottom: 600px;
     }
 
-    .img-jinwo{
+    .img-jinwo {
       position: relative;
       right: 350px;
       top: 800px;
@@ -148,35 +150,119 @@
       cursor: pointer;
     }
 
-    .img-jinwo:hover{
+    .img-jinwo:hover {
       scale: 1.1;
       mix-blend-mode: normal;
     }
 
-.underline-link,
-.underline-link:visited {
-  text-decoration: none;
-  color: black;
-  display: inline;
-  background-image: linear-gradient(to bottom, transparent 20%, red 21%);
-  background-position: 0 1em;
-  background-repeat: no-repeat;
-  background-size: 0% 6px;
-  transition: background-size 0.5s ease-in-out 0.2s;
+    .underline-link,
+    .underline-link:visited {
+      text-decoration: none;
+      color: black;
+      display: inline;
+      background-image: linear-gradient(to bottom, transparent 20%, red 21%);
+      background-position: 0 1em;
+      background-repeat: no-repeat;
+      background-size: 0% 6px;
+      transition: background-size 0.5s ease-in-out 0.2s;
+    }
+
+    .underline-link:hover,
+    .underline-link:focus {
+      background-size: 100% 6px;
+      transition-delay: 0s;
+    }
+
+.skills-section {
+  padding: 60px 20px;
+  background-color: #f5f5f5;
+  text-align: center;
+  min-height: 1000px;
+  
 }
 
-.underline-link:hover,
-.underline-link:focus {
-  background-size: 100% 6px;
-  transition-delay: 0s;
+.skills-section h2 {
+  font-size: 60px;
+  margin-bottom: 60px;
+  color: #333;
+  margin-left: 50px;
+	place-self: center;
+	background: linear-gradient(90deg, #00f, #0ff, #00f) -100%/ 200%;
+	/* being excessively careful with compat, 
+	 * though this has been supported unprefixed and 
+	 * in the shorthand across major browsers for a while */
+	-webkit-background-clip: text;
+	        background-clip: text;
+	/* use color, don't use -webkit-text-fill-color anymore, 
+	 * was meant to solve a problem we haven't had in years */
+	color: transparent;
+	animation: shimmer 2s linear infinite
 }
+
+@keyframes shimmer { to { background-position: 100% } 
+}
+
+.skills-line-group {
+  position: relative;
+  display: inline flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 60px;
+  padding: 20px 0;
+}
+
+/* Red line animation */
+.connector-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 5px;
+  background-color: red;
+  width: 0;
+  z-index: 0;
+  transition: width 0.8s ease-in-out;
+  transform: translateY(-50%);
+  margin-left: 20px; /* Align it from under the first circle */
+}
+
+.skills-line-group:hover .connector-line {
+  width: calc(100% - 40px); /* Stretch across all 5 cards, respecting gap */
+}
+
+/* Skill card wrapper */
+.card {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.08);
+}
+
+/* Image inside the card */
+.card img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  margin: 15% auto;
+  display: block;
+}
+
 
   </style>
 </head>
 
 <body>
-  
-  
+
+
 
   <header id="navigation" class="p-navigation is-dark ">
     <div class="p-navigation__row--25-75">
@@ -209,7 +295,7 @@
             <a class="p-navigation__link" href="#about_me">About Me</a>
           </li>
           <li class="p-navigation__item underlined">
-            <a class="p-navigation__link" href="#">Skills</a>
+            <a class="p-navigation__link" href="#skills">Skills</a>
           </li>
           <li class="p-navigation__item underlined">
             <a class="p-navigation__link" href="#">Projects</a>
@@ -280,44 +366,91 @@
   </div>
 
   <div id="about_me" class="about">
-    
+
     <div class="box">
       <img src="Jinwoo.jpeg" class=" rounded-circle img-jinwo" alt="..." width="500px">
 
       <h1>About Me</h1>
-  
-    <!-- 🧠 Step 1: Hidden SVG filter definition -->
-    <svg width="0" height="0" aria-hidden="true">
-      <filter id="tear">
-        <feTurbulence baseFrequency=".0317" numOctaves="3" />
-        <feDisplacementMap in="SourceGraphic" scale="24" xChannelSelector="R" />
-        <feOffset dx="-6" dy="-6" />
-        <feComposite in="SourceGraphic" operator="atop" />
-      </filter>
-    </svg>
-  
-   
-  
-  
-      <p class="text"><a class="underline-link">Hi! I'm a passionate Python developer, recently certified by IBM as a Python Full Stack Web
-        Developer.</a> I have a solid understanding of Python programming, along with hands-on experience in web development,
+
+      <!-- 🧠 Step 1: Hidden SVG filter definition -->
+      <svg width="0" height="0" aria-hidden="true">
+        <filter id="tear">
+          <feTurbulence baseFrequency=".0317" numOctaves="3" />
+          <feDisplacementMap in="SourceGraphic" scale="24" xChannelSelector="R" />
+          <feOffset dx="-6" dy="-6" />
+          <feComposite in="SourceGraphic" operator="atop" />
+        </filter>
+      </svg>
+
+
+
+
+      <p class="text"><a class="underline-link">Hi! I'm a passionate Python developer, recently certified by IBM as a
+          Python Full Stack Web
+          Developer.</a> I have a solid understanding of Python programming, along with hands-on experience in web
+        development,
         data extraction, and automation.
-  
-       <a class="underline-link"> One of my recent projects involved building a web scraper that extracts website data and stores it into Excel</a>
+
+        <a class="underline-link"> One of my recent projects involved building a web scraper that extracts website data
+          and stores it into Excel</a>
         files—combining Python's power with real-world problem-solving. I've also explored Flask, Django, HTML, CSS, and
         JavaScript to build simple, responsive web applications.
-  
-        I believe in writing clean, efficient code and am always curious to learn new technologies. <a class="underline-link"> I'm now looking for
-        opportunities to apply my skills in a professional setting and grow as a full-stack developer.
-  
-        Feel free to check out some of my work on GitHub.</a></p>
-    </div>
 
+        I believe in writing clean, efficient code and am always curious to learn new technologies. <a
+          class="underline-link"> I'm now looking for
+          opportunities to apply my skills in a professional setting and grow as a full-stack developer.
+
+          Feel free to check out some of my work on GitHub.</a>
+      </p>
+    </div>
 
   </div>
 
+  <section id="skills" class="skills-section">
+    <h2>My Skills</h2>
+    <div class="skills">
+    <div class="skills-line-group">
+    <div class="connector-line"></div> <!-- This is the animated line -->
+    
+    <div class="card">
+      <img src="https://static.vecteezy.com/system/resources/previews/001/416/705/non_2x/html5-emblem-orange-shield-and-white-text-vector.jpg" alt="HTML5">
+    </div>
+    <div class="card">
+      <img src="https://static.vecteezy.com/system/resources/previews/001/416/680/non_2x/css3-emblem-blue-shield-and-white-text-vector.jpg" alt="CSS3">
+    </div>
+    <div class="card">
+      <img src="https://static.vecteezy.com/system/resources/previews/001/416/690/non_2x/js-emblem-orange-shield-and-white-text-vector.jpg" alt="JavaScript">
+    </div>
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpdR263tWjlAI_yWELtIGjnkgzi2oXTr1GqQ&s" alt="Python">
+    </div>
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg"
+     class="card-img-top" alt="Photoshop Logo">
+    </div>
+  </div>
+     <div class="skills-line-group">
+    <div class="connector-line"></div>
 
-  
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg"
+     class="card-img-top" alt="Python Logo">
+    </div>
+    <div class="card">
+      <img src="https://img.icons8.com/ios_filled/512/40C057/django.png" alt="Django">
+    </div>
+    <div class="card">
+      <img src="https://download.logo.wine/logo/MySQL/MySQL-Logo.wine.png" alt="MySQL">
+    </div>
+    <div class="card">
+      <img src="https://download.logo.wine/logo/Adobe_After_Effects/Adobe_After_Effects-Logo.wine.png" alt="After Effects">
+    </div>
+    <div class="card">
+      <img src="https://logos-world.net/wp-content/uploads/2020/11/GitHub-Logo.png" alt="GitHub">
+    </div>
+  </div>
+  </section>
+
 </body>
 
 </html>

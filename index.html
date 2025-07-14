@@ -72,6 +72,8 @@
 
 
     .about {
+      position: relative;
+      top: 10px;
       height: 1000px;
       width: 100%;
       background-color: #262626;
@@ -173,89 +175,378 @@
       transition-delay: 0s;
     }
 
-.skills-section {
-  padding: 60px 20px;
-  background-color: #f5f5f5;
-  text-align: center;
-  min-height: 1000px;
-  
-}
+    .skills-section {
+      position: relative;
+      top: 10px;
+      padding: 60px 20px;
+      background-color: #f5f5f5;
+      text-align: center;
+      min-height: 1000px;
 
-.skills-section h2 {
-  font-size: 60px;
-  margin-bottom: 60px;
-  color: #333;
-  margin-left: 50px;
-	place-self: center;
-	background: linear-gradient(90deg, #00f, #0ff, #00f) -100%/ 200%;
-	/* being excessively careful with compat, 
+    }
+
+    .skills-section h2 {
+      font-size: 60px;
+      margin-bottom: 60px;
+      color: #333;
+      margin-left: 50px;
+      place-self: center;
+      background: linear-gradient(90deg, #00f, #0ff, #00f) -100%/ 200%;
+      /* being excessively careful with compat, 
 	 * though this has been supported unprefixed and 
 	 * in the shorthand across major browsers for a while */
-	-webkit-background-clip: text;
-	        background-clip: text;
-	/* use color, don't use -webkit-text-fill-color anymore, 
+      -webkit-background-clip: text;
+      background-clip: text;
+      /* use color, don't use -webkit-text-fill-color anymore, 
 	 * was meant to solve a problem we haven't had in years */
-	color: transparent;
-	animation: shimmer 2s linear infinite
-}
+      color: transparent;
+      animation: shimmer 2s linear infinite
+    }
 
-@keyframes shimmer { to { background-position: 100% } 
-}
+    @keyframes shimmer {
+      to {
+        background-position: 100%
+      }
+    }
 
-.skills-line-group {
+    .skills-line-group {
+      position: relative;
+      display: inline flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 60px;
+      padding: 20px 0;
+    }
+
+    /* Red line animation */
+    .connector-line {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      height: 5px;
+      background-color: red;
+      width: 0;
+      z-index: 0;
+      transition: width 0.8s ease-in-out;
+      transform: translateY(-50%);
+      margin-left: 20px;
+      /* Align it from under the first circle */
+    }
+
+    .skills-line-group:hover .connector-line {
+      width: calc(100% - 40px);
+      /* Stretch across all 5 cards, respecting gap */
+    }
+
+    /* Skill card wrapper */
+    .new_card {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 1;
+      transition: transform 0.3s ease;
+    }
+
+    .new_card:hover {
+      transform: scale(1.08);
+    }
+
+    /* Image inside the card */
+    .new_card img {
+      width: 70%;
+      height: 70%;
+      object-fit: contain;
+      margin: 15% auto;
+      display: block;
+    }
+
+    .projects {
+      background-color: #262626;
+      height: 1000px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      width: 18rem;
+      min-height: 500px;
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .btn-primary {
+      margin-top: auto;
+    }
+
+.project-heading {
+  font-size: 60px;
+  margin: 0 auto 60px auto;
+  text-align: center;
+  color: transparent;
+  background: linear-gradient(90deg, #00f, #0ff, #00f);
+  background-size: 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: shimmer 2s linear infinite;
   position: relative;
-  display: inline flex;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
+  bottom: 50px;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 100%;
+  }
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Project heading shimmer */
+.project-heading {
+  font-size: 60px;
   margin-bottom: 60px;
-  padding: 20px 0;
+  text-align: center;
+  color: transparent;
+  background: linear-gradient(90deg, #00f, #0ff, #00f);
+  background-size: 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: shimmer 2s linear infinite, fadeUp 1s ease-out;
 }
 
-/* Red line animation */
-.connector-line {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  height: 5px;
-  background-color: red;
-  width: 0;
-  z-index: 0;
-  transition: width 0.8s ease-in-out;
-  transform: translateY(-50%);
-  margin-left: 20px; /* Align it from under the first circle */
+/* Image equal height */
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
 }
 
-.skills-line-group:hover .connector-line {
-  width: calc(100% - 40px); /* Stretch across all 5 cards, respecting gap */
-}
-
-/* Skill card wrapper */
+/* Card layout */
 .card {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  position: relative;
-  z-index: 1;
-  transition: transform 0.3s ease;
+  margin-right: 50px;
+  width: 18rem;
+  animation: fadeUp 1s ease-out;
+  animation-fill-mode: both;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Animate card text from bottom */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Shimmer effect for heading */
+@keyframes shimmer {
+  to {
+    background-position: 100%;
+  }
+}
+
+/* Hover effect */
 .card:hover {
-  transform: scale(1.08);
+  transform: scale(1.03);
+  box-shadow: 0 25px 35px rgba(0, 0, 0, 0.2);
+  border: .5px solid black;
 }
 
-/* Image inside the card */
-.card img {
-  width: 70%;
-  height: 70%;
-  object-fit: contain;
-  margin: 15% auto;
-  display: block;
+/* Consistent spacing on button */
+.card .btn {
+  margin-top: auto;
 }
 
+.container {
+  position: relative;
+  bottom: 40px;
+  min-height: 100vh;
+  min-width: 100vw;
+  padding-top: 80px;
+  padding-bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  justify-content: center; /* Center content vertically if needed */
+  text-align: center;
+}
+
+/* Section heading */
+.education-heading {
+  font-size: 60px;
+  margin-bottom: 60px;
+  text-align: center;
+  color: transparent;
+  background: linear-gradient(90deg, #00f, #0ff, #00f);
+  background-size: 200%;
+  background-clip: text;
+  position: relative;
+  bottom: 50px;
+  -webkit-background-clip: text;
+  animation: shimmer 2s linear infinite, fadeUp 1s ease-out;
+}
+
+/* Education cards */
+.edu-card {
+  display: flex;
+  justify-content: center;
+}
+
+.edu-card-inner {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.edu-card-inner:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* Typography */
+.edu-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.edu-subtitle {
+  font-size: 16px;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.edu-description {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Reuse shimmer */
+@keyframes shimmer {
+  to {
+    background-position: 100%;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive spacing */
+@media (max-width: 768px) {
+  .education-heading {
+    font-size: 40px;
+  }
+
+  .edu-card-inner {
+    padding: 20px;
+  }
+}
+
+.education-section {
+  background: linear-gradient(135deg, #e0f2ff, #ffffff);
+  border-radius: 20px;
+  padding: 80px 20px;
+  margin-top: 60px;
+  position: relative;
+  bottom: 90px;
+}
+
+.project-section {
+  background: linear-gradient(135deg, #fef9ff, #e4f1ff);
+  border-radius: 20px;
+  padding: 80px 20px;
+  margin-top: 60px;
+}
+
+.enquiry-section {
+  background: linear-gradient(135deg, #f2f9ff, #ffffff);
+  border-radius: 20px;
+  padding: 60px 30px;
+  max-width: 900px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  position: relative;
+  bottom: 135px;
+}
+
+.enquiry-heading {
+  font-size: 50px;
+  background: linear-gradient(90deg, #00f, #0ff, #00f);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 2s linear infinite;
+}
+
+.enquiry-box {
+  border: 2px solid #cce0ff;
+  border-radius: 20px;
+  padding: 30px;
+  background: #ffffff;
+  max-width: 600px;
+  margin: auto;
+}
+
+.enquiry-input {
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 15px;
+  height: 45px;
+}
+
+.enquiry-input#message {
+  height: auto;
+  resize: vertical;
+}
+
+.enquiry-form button {
+  border-radius: 30px;
+  padding: 10px 25px;
+  font-size: 16px;
+  transition: 0.3s ease;
+}
+
+.enquiry-form button:hover {
+  background-color: #0066cc;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 100%;
+  }
+}
+body{
+  overflow-x: hidden;
+  /* overflow-y: hidden; */
+  height: 100vh;
+}
 
   </style>
 </head>
@@ -298,20 +589,20 @@
             <a class="p-navigation__link" href="#skills">Skills</a>
           </li>
           <li class="p-navigation__item underlined">
-            <a class="p-navigation__link" href="#">Projects</a>
+            <a class="p-navigation__link" href="#pro">Projects</a>
           </li>
           <li class="p-navigation__item underlined">
-            <a class="p-navigation__link" href="#">Experience</a>
+            <a class="p-navigation__link" href="#edu">Education</a>
           </li>
           <li class="p-navigation__item underlined">
-            <a class="p-navigation__link" href="#">Education</a>
+            <a class="p-navigation__link" href="#con">Contact Me</a>
           </li>
         </ul>
 
         <ul class="p-navigation__items">
-          <button style="position: relative; top: 10px;" class="p-button--positive btn btn-outline-success">Hire
+          <a href="#con"><button style="position: relative; top: 10px;" class="p-button--positive btn btn-outline-success">Hire
             me</button>
-
+            </a>
         </ul>
 
 
@@ -343,25 +634,27 @@
       <span class="typing-loop">Python web developer.</span>
     </p>
 
-    <button style="margin-top: 40px;" type="button" class="btn btn-outline-success">Connect with me</button>
-    <button style="margin-top: 40px;" type="button" class="btn btn-outline-primary">About Me</button>
+    <a href="#con"><button style="margin-top: 40px;" type="button" class="btn btn-outline-success">Connect with me</button></a>
+    <a href="#about_me"><button style="margin-top: 40px;" type="button" class="btn btn-outline-primary">About Me</button></a>
 
     <img src="Jinwoo.jpeg"
       style="position: relative; left: 500px; bottom: 260px; width: 450px; height: 450px; mix-blend-mode:hard-light;"
       class="rounded mx-auto d-block rounded-circle" alt="...">
 
-    <img style="width: 50px; height: 50px; position: relative; bottom: 400px;"
+   <a href="https://github.com/Alishaikh77"> <img style="width: 50px; height: 50px; position: relative; bottom: 400px;"
       src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/2048px-Octicons-mark-github.svg.png"
-      class="rounded" alt="Cinque Terre">
-    <img style="width: 50px; height: 50px; position: relative; bottom: 400px; margin-left: 30px;"
+      class="rounded" alt="Cinque Terre"></a>
+   <a href="#"> <img style="width: 50px; height: 50px; position: relative; bottom: 400px; margin-left: 30px;"
       src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/960px-LinkedIn_logo_initials.png"
-      class="" alt="Cinque Terre">
-    <img style="width: 80px; height: 80px; position: relative; bottom: 400px;  margin-left: 20px"
+      class="" alt="Cinque Terre"></a>
+    <a href=""><img style="width: 80px; height: 80px; position: relative; bottom: 400px;  margin-left: 20px"
       src="https://images.icon-icons.com/2642/PNG/512/google_mail_gmail_logo_icon_159346.png" class=""
-      alt="Cinque Terre">
-    <img style="width: 80px; height: 80px; position: relative; bottom: 400px;  margin-left: 10px "
+      alt="Cinque Terre"></a>
+
+    <a href="https://www.instagram.com/92_bits/?hl=en"><img style=" cursor: pointer; width: 80px; height: 80px; position: relative; bottom: 400px;  margin-left: 10px "
       src="https://static.vecteezy.com/system/resources/previews/018/930/415/non_2x/instagram-logo-instagram-icon-transparent-free-png.png"
-      class="" alt="Cinque Terre">
+      class="" alt="Cinque Terre"></a>
+
   </div>
   </div>
 
@@ -409,47 +702,170 @@
   <section id="skills" class="skills-section">
     <h2>My Skills</h2>
     <div class="skills">
-    <div class="skills-line-group">
-    <div class="connector-line"></div> <!-- This is the animated line -->
-    
-    <div class="card">
-      <img src="https://static.vecteezy.com/system/resources/previews/001/416/705/non_2x/html5-emblem-orange-shield-and-white-text-vector.jpg" alt="HTML5">
-    </div>
-    <div class="card">
-      <img src="https://static.vecteezy.com/system/resources/previews/001/416/680/non_2x/css3-emblem-blue-shield-and-white-text-vector.jpg" alt="CSS3">
-    </div>
-    <div class="card">
-      <img src="https://static.vecteezy.com/system/resources/previews/001/416/690/non_2x/js-emblem-orange-shield-and-white-text-vector.jpg" alt="JavaScript">
-    </div>
-    <div class="card">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpdR263tWjlAI_yWELtIGjnkgzi2oXTr1GqQ&s" alt="Python">
-    </div>
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg"
-     class="card-img-top" alt="Photoshop Logo">
-    </div>
-  </div>
-     <div class="skills-line-group">
-    <div class="connector-line"></div>
+      <div class="skills-line-group">
+        <div class="connector-line"></div> <!-- This is the animated line -->
 
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg"
-     class="card-img-top" alt="Python Logo">
+        <div class="new_card">
+          <img
+            src="https://static.vecteezy.com/system/resources/previews/001/416/705/non_2x/html5-emblem-orange-shield-and-white-text-vector.jpg"
+            alt="HTML5">
+        </div>
+        <div class="new_card">
+          <img
+            src="https://static.vecteezy.com/system/resources/previews/001/416/680/non_2x/css3-emblem-blue-shield-and-white-text-vector.jpg"
+            alt="CSS3">
+        </div>
+        <div class="new_card">
+          <img
+            src="https://static.vecteezy.com/system/resources/previews/001/416/690/non_2x/js-emblem-orange-shield-and-white-text-vector.jpg"
+            alt="JavaScript">
+        </div>
+        <div class="new_card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpdR263tWjlAI_yWELtIGjnkgzi2oXTr1GqQ&s"
+            alt="Python">
+        </div>
+        <div class="new_card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg"
+            class="card-img-top" alt="Photoshop Logo">
+        </div>
+      </div>
+      <div class="skills-line-group">
+        <div class="connector-line"></div>
+
+        <div class="new_card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" class="card-img-top"
+            alt="Python Logo">
+        </div>
+        <div class="new_card">
+          <img src="https://img.icons8.com/ios_filled/512/40C057/django.png" alt="Django">
+        </div>
+        <div class="new_card">
+          <img src="https://download.logo.wine/logo/MySQL/MySQL-Logo.wine.png" alt="MySQL">
+        </div>
+        <div class="new_card">
+          <img src="https://download.logo.wine/logo/Adobe_After_Effects/Adobe_After_Effects-Logo.wine.png"
+            alt="After Effects">
+        </div>
+        <div class="new_card">
+          <img src="https://logos-world.net/wp-content/uploads/2020/11/GitHub-Logo.png" alt="GitHub">
+        </div>
+      </div>
+  </section>
+
+
+
+<div id="pro" class="container mt-5 project-section">
+  <h2 class="project-heading" style="position: relative; bottom: 60px;">My Projects</h2>
+
+  <div class="d-flex flex-wrap justify-content-center gap-4">
+    <div class="card mb-4">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6vxMh-FE7qjv5s3uK38nx4S4kDVW2r9gK4g&s"
+        class="card-img-top" alt="Web Scraping Using Python">
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title">Python Web Scraping</h5>
+        <p class="card-text">
+          I built a job portal scraper using Python libraries. The script collects job-related information such as
+          title, description, skills, salary, and location, then stores it in an Excel file.
+        </p>
+        <a href="https://github.com/Alishaikh77/Python_WebScraping" class="btn btn-primary mt-auto text-white">GitHub Link</a>
+      </div>
     </div>
-    <div class="card">
-      <img src="https://img.icons8.com/ios_filled/512/40C057/django.png" alt="Django">
+
+    <div class="card mb-4">
+      <img src="https://m.media-amazon.com/images/I/81bUpjf9vuL.png" class="card-img-top" alt="Snake Game">
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title">Snake Game</h5>
+        <p class="card-text">
+          A classic Snake Game created using HTML, CSS, and JavaScript.
+        </p>
+        <a href="https://github.com/Alishaikh77/Snake_Game" class="btn btn-primary mt-auto text-white">GitHub Link</a>
+      </div>
     </div>
-    <div class="card">
-      <img src="https://download.logo.wine/logo/MySQL/MySQL-Logo.wine.png" alt="MySQL">
-    </div>
-    <div class="card">
-      <img src="https://download.logo.wine/logo/Adobe_After_Effects/Adobe_After_Effects-Logo.wine.png" alt="After Effects">
-    </div>
-    <div class="card">
-      <img src="https://logos-world.net/wp-content/uploads/2020/11/GitHub-Logo.png" alt="GitHub">
+
+    <div class="card mb-4">
+      <img
+        src="https://cdn.prod.website-files.com/606a802fcaa89bc357508cad/61701b4e166c837543d8f0ce_2_How%20To%20a%20Create%20Personal%20Portfolio%20Website.png"
+        class="card-img-top" alt="Portfolio Website">
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title">Portfolio Website</h5>
+        <p class="card-text">
+          A personal portfolio website designed using HTML, CSS, and JavaScript with beautiful styling and hover
+          effects.
+        </p>
+        <a href="https://github.com/Alishaikh77/Portfolio_Website" class="btn btn-primary mt-auto text-white">GitHub Link</a>
+      </div>
     </div>
   </div>
-  </section>
+</div>
+
+
+<div id="edu" class="container mt-5 education-section">
+  <h2 class="education-heading">My Education</h2>
+
+  <div class="row justify-content-center">
+    <!-- Education Card 1 -->
+    <div class="col-md-5 col-lg-4 edu-card mb-4">
+      <div class="edu-card-inner">
+        <h5 class="edu-title">Diploma in Full Stack Web Development</h5>
+        <p class="edu-subtitle">IBM Certified | 2023</p>
+        <p class="edu-description">Covered HTML, CSS, JavaScript, Python, Django, MongoDB, REST API, and deployment. Built multiple projects including web apps and API integrations.</p>
+      </div>
+    </div>
+
+    <!-- Education Card 2 -->
+    <div class="col-md-5 col-lg-4 edu-card mb-4">
+      <div class="edu-card-inner">
+        <h5 class="edu-title">SSC</h5>
+        <p class="edu-subtitle">State Board Of Maharashtra| 2018</p>
+        <p class="edu-description">Completed 10th standard with a focus on Commerce. Developed a strong foundation in business studies, economics, and communication skills.</p>
+      </div>
+    </div>
+
+    <!-- Education Card 3 -->
+    <div class="col-md-5 col-lg-4 edu-card mb-4">
+      <div class="edu-card-inner">
+        <h5 class="edu-title">HSC – Higher Secondary Certificate</h5>
+        <p class="edu-subtitle">Maharashtra State Board | 2020</p>
+        <p class="edu-description">Completed 12th standard with a focus on Commerce. Developed a strong foundation in business studies, economics, and communication skills.</p>
+      </div>
+    </div>
+
+    <div class="col-md-5 col-lg-4 edu-card mb-4">
+      <div class="edu-card-inner">
+        <h5 class="edu-title">BCOM- Bachelor of commerce</h5>
+        <p class="edu-subtitle">University of mumbai | 2024</p>
+        <p class="edu-description">Completed my BCOM with a focus on Commerce. Developed a strong foundation in business studies, economics, and communication skills.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="con" class="container enquiry-section mt-5 mb-5">
+  <h2 class="enquiry-heading text-center mb-4">Get in Touch</h2>
+
+  <div class="enquiry-box mx-auto" style="width: 500px;">
+    <form action="https://formspree.io/f/yourformid" method="POST" class="enquiry-form">
+      <div class="mb-3">
+        <label for="name" class="form-label" style="position: relative; right: 160px;">Your Name</label>
+        <input type="text" class="form-control enquiry-input" id="name" name="name" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label" style="position: relative; right: 160px;">Your Email</label>
+        <input type="email" class="form-control enquiry-input" id="email" name="_replyto" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="message" class="form-label" style="position: relative; right: 160px;">Your Message</label>
+        <textarea class="form-control enquiry-input" id="message" rows="4" name="message" required></textarea>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary px-4">Send Message</button>
+      </div>
+    </form>
+  </div>
+</div>
 
 </body>
 
